@@ -13,7 +13,6 @@ export class SorterPipe implements PipeTransform {
    */
   transform(value: any[], key: string): any[] {
     // A KÖVETKEZŐ SORT TÁVOLÍTSD EL!!!
-    return value;
 
     /**
      * FELADAT!
@@ -21,7 +20,9 @@ export class SorterPipe implements PipeTransform {
      * térj vissza a value változóval.
      */
 
-
+     if (!Array.isArray(value) || !key) {
+      return value;
+    }
 
     /**
      * FELADAT!
@@ -33,8 +34,6 @@ export class SorterPipe implements PipeTransform {
      *  összehasonlításának az eredményével.
      */
 
-
-  }
-
-}
-
+     return value.sort((a, b) => Number.isInteger(a[key]) && Number.isInteger(b[key]) ? a[key] - b[key] : (String(a[key]).toLowerCase()).localeCompare(String(b[key]).toLowerCase()));
+     }
+    }

@@ -13,8 +13,7 @@ export class UserListComponent implements OnInit {
    * Hozd létre az alábbi Input tulajdonságot.
    * @var phraseString {string} - Input tulajdonság
    */
-
-
+   @Input() phraseString: string = "";
   @Input() users: User[] = [];
   @Output() delUser: EventEmitter<User> = new EventEmitter();
   currentUser: User = new User();
@@ -25,6 +24,7 @@ export class UserListComponent implements OnInit {
    * @var columnKey {string} - a rendezés oszlopának kulcsa
    */
 
+  columnKey: string = "";
   constructor() { }
 
   ngOnInit(): void {
@@ -49,5 +49,7 @@ export class UserListComponent implements OnInit {
    * @param key {string} - a kapott kulcs
    * @returns {void}
    */
-
+   onColumnSelect(key: string): void{
+     this.columnKey = key;
+   }
 }

@@ -32,7 +32,9 @@ export class FilterPipe implements PipeTransform {
      */
 
 
-return value.filter (item => String(item[key].toLowerCase).includes(phrase.toLowerCase()));
+     return value.filter(item => {
+      const value = String(item[key]);
+      return value.toLocaleLowerCase().includes(phrase.toLocaleLowerCase())
+    })
   }
-
 }
